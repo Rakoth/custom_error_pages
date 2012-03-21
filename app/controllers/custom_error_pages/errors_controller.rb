@@ -1,5 +1,6 @@
 module CustomErrorPages
   class ErrorsController < ApplicationController
+    unloadable
     layout false
     before_filter :html_format
 

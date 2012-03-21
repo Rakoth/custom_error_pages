@@ -14,7 +14,7 @@ module CustomErrorPages
         result = [
           ActionController::RoutingError,
           ActionController::UnknownController,
-          ActionController::UnknownAction,
+          AbstractController::ActionNotFound,
         ]
 
         result << ActiveRecord::RecordNotFound if defined? ActiveRecord
