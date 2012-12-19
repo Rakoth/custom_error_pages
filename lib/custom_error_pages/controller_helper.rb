@@ -52,6 +52,10 @@ module CustomErrorPages
         ExceptionNotifier::Notifier.exception_notification(env, @error).deliver
         env['exception_notifier.delivered'] = true
       end
+
+      if defined? Ratchetio
+        Ratchetio.report_exception(@error, ratchetio_request_data, ratchetio_person_data)
+      end
     rescue => exception
       Rails.logger.error exception.inspect.red
     end
